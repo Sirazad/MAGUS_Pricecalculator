@@ -33,8 +33,4 @@ public class ItemController {
         return response;
     }
 
-    @GetMapping("/item/test")
-    public Item testItem() {
-        return new Item(11L, "own name", 30, 20, 28);
-    }
 }
