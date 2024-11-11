@@ -1,4 +1,4 @@
-package hu.magus.pricecalculator.controller;
+package hu.magus.pricecalculator.controller.category;
 
 import hu.magus.pricecalculator.entity.Category;
 import hu.magus.pricecalculator.service.CategoryService;
@@ -24,8 +24,9 @@ public class CategoryController {
         return service.createCategory(name);
     }
 
-    @GetMapping("category")
+    @GetMapping("/category/all")
     public List<Category> getAllCategories() {
         return service.getAllCategories();
     }
+
 }

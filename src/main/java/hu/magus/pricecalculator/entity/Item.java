@@ -2,10 +2,12 @@ package hu.magus.pricecalculator.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,14 +25,16 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    public Long id;
-    public String name;
+    private Long id;
+    private String name;
     @Column(name = "min_price")
-    public int minPrice;
+    private int minPrice;
     @Column(name = "max_price")
-    public int maxPrice;
+    private int maxPrice;
     @Column(columnDefinition = "int default 25")
-    int quality;
-    @ManyToOne
-    Category category;
+    private int quality;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Category category;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Material material;
 }

@@ -1,34 +1,15 @@
 package hu.magus.pricecalculator.service;
 
 import hu.magus.pricecalculator.entity.Category;
-import hu.magus.pricecalculator.repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class CategoryService {
+public interface CategoryService {
+    List<Category> getAllCategories();
 
-    @Autowired
-    private CategoryRepository repository;
+    Category getCategory(String name);
 
-    public List<Category> getAllCategories() {
-        return repository.findAll();
-    }
+    Category getCategory(Long id);
 
-    public Category getCategory(String name) {
-        return repository.findByName(name);
-    }
-
-    public Category getCategory(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    public boolean createCategory(String name) {
-        Category category = new Category();
-        category.setName(name);
-        repository.save(category);
-        return repository.findByName(name) != null;
-    }
+    boolean createCategory(String name);
 }
