@@ -1,7 +1,7 @@
 package hu.magus.pricecalculator.controller.category;
 
 import hu.magus.pricecalculator.entity.Category;
-import hu.magus.pricecalculator.service.CategoryService;
+import hu.magus.pricecalculator.service.category.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

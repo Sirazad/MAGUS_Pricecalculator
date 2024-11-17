@@ -5,22 +5,26 @@ import hu.magus.pricecalculator.controller.item.UpdateItemRequest;
 import hu.magus.pricecalculator.entity.Item;
 import hu.magus.pricecalculator.exception.NoItemFoundException;
 import hu.magus.pricecalculator.repository.ItemRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
+@AllArgsConstructor
 public class ItemServiceDefaultImpl implements ItemService {
-    @Autowired
-    private ItemRepository repository;
+
+    private final ItemRepository repository;
+    private final ConversionService converter;
 
     @Override
     public List<Item> getAllItems() {
-        List<Item> response = repository.findAll();
-        return response;
+        return repository.findAll();
     }
 
     @Override
@@ -44,9 +48,13 @@ public class ItemServiceDefaultImpl implements ItemService {
     }
 
     @Override
-    public Item addItem(int id, AddItemRequest request) {
+    public Item addItem(AddItemRequest request) {
 
-        return null;
+        if (repository.findByName(request.getName()).isPresent()) {
+            log.info("Item with this name already exists: {}", request.getName());
+            throw new IllegalArgumentException("Item already exists");
+        }
+        return repository.save(converter.convert(request, Item.class));
     }
 
     @Override
@@ -54,11 +62,6 @@ public class ItemServiceDefaultImpl implements ItemService {
         return null;
     }
 
-    @Override
-    public Item createItemForCategory(AddItemRequest request) {
-
-        return null;
-    }
 
 //    public Item createItemForCategory(int id, Item item) {
 //        if (Objects.nonNull(repository.findByName(item.getName()))) {

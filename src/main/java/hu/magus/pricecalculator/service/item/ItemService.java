@@ -19,10 +19,8 @@ public interface ItemService {
 
     List<Item> getItemsByCategory(long categoryId);
 
-    Item addItem(int id, AddItemRequest request);
+    Item addItem(@Valid AddItemRequest request);
 
     Item modifyItem(int id, UpdateItemRequest request);
 
-
-    Item createItemForCategory(@Valid AddItemRequest request);
 }

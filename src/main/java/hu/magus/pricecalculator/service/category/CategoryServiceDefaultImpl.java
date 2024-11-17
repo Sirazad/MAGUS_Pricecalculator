@@ -1,4 +1,4 @@
-package hu.magus.pricecalculator.service;
+package hu.magus.pricecalculator.service.category;
 
 import hu.magus.pricecalculator.entity.Category;
 import hu.magus.pricecalculator.repository.CategoryRepository;

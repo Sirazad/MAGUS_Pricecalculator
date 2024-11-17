@@ -1,10 +1,12 @@
 package hu.magus.pricecalculator.validator;
 
 import hu.magus.pricecalculator.controller.item.AddItemRequest;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+@Component
 public class AddItemRequestValidator implements Validator {
 
     @Override
@@ -21,8 +23,8 @@ public class AddItemRequestValidator implements Validator {
         ValidationUtils.rejectIfEmpty(errors, "maxPrice", "Maximum price is not specified.");
 
         AddItemRequest request = (AddItemRequest) target;
-        if (request.minPrice()>request.maxPrice()) errors.reject("Minimum price is over maximum price.");
-        if (request.minPrice() < 0) errors.rejectValue("minPrice", "Minimum price is negative.");
-        if (request.maxPrice() < 0) errors.rejectValue("maxPrice", "Maximum price is negative.");
+        if (request.getMinPrice()>request.getMaxPrice()) errors.reject("Minimum price is over maximum price.");
+        if (request.getMinPrice() < 0) errors.rejectValue("minPrice", "Minimum price is negative.");
+        if (request.getMaxPrice() < 0) errors.rejectValue("maxPrice", "Maximum price is negative.");
     }
 }
