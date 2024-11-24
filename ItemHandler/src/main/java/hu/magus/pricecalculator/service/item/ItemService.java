@@ -19,7 +19,7 @@ public interface ItemService {
 
     List<Item> getItemsByCategory(long categoryId);
 
-    Item addItem(@Valid AddItemRequest request);
+    Item addItem(@Valid ItemDto request);
 
     Item modifyItem(int id, UpdateItemRequest request);
 

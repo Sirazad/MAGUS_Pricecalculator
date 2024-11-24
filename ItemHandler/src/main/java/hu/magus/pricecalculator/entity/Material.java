@@ -26,6 +26,6 @@ public class Material {
     private MaterialCategory materialCategory;
 
     private enum MaterialCategory {
-        I, II, III, MÁGIKUS
+        I, II, III, MAGIC
     }
 }
