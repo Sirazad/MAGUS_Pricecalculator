@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate6.Hibernate6Module;
 import hu.magus.pricecalculator.converter.ItemAddRequestToItemDtoConverter;
 import hu.magus.pricecalculator.converter.ItemDtoToItemConverter;
+import hu.magus.pricecalculator.converter.MaterialGetRequestToMaterialCategoryConverter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import org.springframework.format.support.FormattingConversionService;
 public class AppConfig {
     private final ItemAddRequestToItemDtoConverter itemAddRequestToItemDtoConverter;
     private final ItemDtoToItemConverter itemDtoToItemConverter;
+    private final MaterialGetRequestToMaterialCategoryConverter materialGetRequestToMaterialCategoryConverter;
 
     @Bean
     @Lazy
@@ -23,6 +25,7 @@ public class AppConfig {
 
         conversionService.addConverter(itemAddRequestToItemDtoConverter);
         conversionService.addConverter(itemDtoToItemConverter);
+        conversionService.addConverter(materialGetRequestToMaterialCategoryConverter);
         return conversionService;
     }
 

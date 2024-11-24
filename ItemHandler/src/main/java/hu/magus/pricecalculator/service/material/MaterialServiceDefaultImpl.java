@@ -24,7 +24,7 @@ public class MaterialServiceDefaultImpl implements MaterialService {
 
     @Override
     public List<Material> getAllMaterialsForCategory(MaterialCategory category) {
-        return List.of();
+        return repository.findAllByMaterialCategory(category);
     }
 
     @Override

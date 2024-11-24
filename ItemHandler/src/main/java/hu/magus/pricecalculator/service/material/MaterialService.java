@@ -7,17 +7,17 @@ import java.util.List;
 
 public interface MaterialService {
 
-    public List<Material> getAllMaterials();
+    List<Material> getAllMaterials();
 
-    public List<Material> getAllMaterialsForCategory(MaterialCategory category);
+    List<Material> getAllMaterialsForCategory(MaterialCategory category);
 
-    public List<Material> getAllMaterialsWithNameContaining(String name);
+    List<Material> getAllMaterialsWithNameContaining(String name);
 
-    public Material getMaterial(String name);
+    Material getMaterial(String name);
 
-    public Material createMaterial(String name, MaterialCategory category);
+    Material createMaterial(String name, MaterialCategory category);
 
-    public Material updateMaterial(MaterialDto materialDto);
+    Material updateMaterial(MaterialDto materialDto);
 
-    public boolean deleteMaterial(MaterialDto materialDto);
+    boolean deleteMaterial(MaterialDto materialDto);
 }
