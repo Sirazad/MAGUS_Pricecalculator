@@ -2,6 +2,7 @@ package hu.magus.pricecalculator.controller.category;
 
 import hu.magus.pricecalculator.entity.Category;
 import hu.magus.pricecalculator.service.category.CategoryService;
+import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/category")
 @Slf4j
+@AllArgsConstructor
 public class CategoryController {
 
-    @Autowired
     private CategoryService service;
 
     @PostMapping("/add")

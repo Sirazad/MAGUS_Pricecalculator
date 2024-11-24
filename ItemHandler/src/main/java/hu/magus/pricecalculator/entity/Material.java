@@ -25,7 +25,4 @@ public class Material {
     @Column(name = "material-category")
     private MaterialCategory materialCategory;
 
-    private enum MaterialCategory {
-        I, II, III, MAGIC
-    }
 }
