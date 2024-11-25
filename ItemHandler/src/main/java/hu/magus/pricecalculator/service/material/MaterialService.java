@@ -15,9 +15,9 @@ public interface MaterialService {
 
     Material getMaterial(String name);
 
-    Material createMaterial(String name, MaterialCategory category);
+    Material createMaterial(MaterialDto material);
 
     Material updateMaterial(MaterialDto materialDto);
 
-    boolean deleteMaterial(MaterialDto materialDto);
+    boolean deleteMaterial(Long id);
 }

@@ -2,8 +2,10 @@ package hu.magus.pricecalculator.controller.material;
 
 import hu.magus.pricecalculator.entity.Material;
 import hu.magus.pricecalculator.entity.MaterialCategory;
+import hu.magus.pricecalculator.service.material.MaterialDto;
 import hu.magus.pricecalculator.service.material.MaterialService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.ConversionService;
@@ -37,5 +39,15 @@ public class MaterialController {
     @PostMapping
     public List<Material> getMaterialsWithName (@Valid @RequestBody GetMaterialsWithNameRequest request) {
         return service.getAllMaterialsWithNameContaining(request.getName());
+    }
+
+    @GetMapping
+    public Material getMaterialByName(@NotBlank String name) {
+        return service.getMaterial(name);
+    }
+
+    @PostMapping("/add")
+    public Material createMaterial(@RequestBody AddMaterialRequest addMaterialRequest) {
+        return service.createMaterial(converter.convert(addMaterialRequest, MaterialDto.class));
     }
 }

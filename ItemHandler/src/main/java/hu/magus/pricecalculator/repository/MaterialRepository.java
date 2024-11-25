@@ -16,5 +16,9 @@ public interface MaterialRepository extends CrudRepository<Material, Long> {
     List<Material> findAllByMaterialCategory(MaterialCategory materialCategory);
 
     List<Material> findByNameContaining(String name);
+
+    Material findByName(String name);
+
+    boolean existsByName(String name);
 }
 

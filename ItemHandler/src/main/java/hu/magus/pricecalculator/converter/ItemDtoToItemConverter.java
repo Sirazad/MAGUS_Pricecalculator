@@ -1,10 +1,6 @@
 package hu.magus.pricecalculator.converter;
 
-import hu.magus.pricecalculator.controller.item.AddItemRequest;
-import hu.magus.pricecalculator.entity.Category;
 import hu.magus.pricecalculator.entity.Item;
-import hu.magus.pricecalculator.exception.NoCategoryFoundException;
-import hu.magus.pricecalculator.service.category.CategoryService;
 import hu.magus.pricecalculator.service.item.ItemDto;
 import lombok.AllArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
