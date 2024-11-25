@@ -29,7 +29,7 @@ public class MaterialServiceDefaultImpl implements MaterialService {
 
     @Override
     public List<Material> getAllMaterialsWithNameContaining(String name) {
-        return List.of();
+        return repository.findByNameContaining(name);
     }
 
     @Override

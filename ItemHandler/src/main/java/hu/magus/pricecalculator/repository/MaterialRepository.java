@@ -11,7 +11,10 @@ import java.util.List;
 public interface MaterialRepository extends CrudRepository<Material, Long> {
 
 
-    public List<Material> findAll();
+    List<Material> findAll();
 
-    public List<Material> findAllByMaterialCategory(MaterialCategory materialCategory);
+    List<Material> findAllByMaterialCategory(MaterialCategory materialCategory);
+
+    List<Material> findByNameContaining(String name);
 }
+

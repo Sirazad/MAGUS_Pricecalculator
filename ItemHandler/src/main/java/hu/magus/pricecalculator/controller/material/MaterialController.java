@@ -34,4 +34,8 @@ public class MaterialController {
         return service.getAllMaterialsForCategory(converter.convert(request, MaterialCategory.class));
     }
 
+    @PostMapping
+    public List<Material> getMaterialsWithName (@Valid @RequestBody GetMaterialsWithNameRequest request) {
+        return service.getAllMaterialsWithNameContaining(request.getName());
+    }
 }
