@@ -1,4 +1,4 @@
-package hu.magus.pricecalculator.entity;
+package hu.magus.pricecalculator.service.material;
 
 public enum MaterialCategory {
     I, II, III, MAGIC

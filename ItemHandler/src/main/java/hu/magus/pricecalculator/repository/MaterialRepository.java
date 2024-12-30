@@ -1,7 +1,7 @@
 package hu.magus.pricecalculator.repository;
 
 import hu.magus.pricecalculator.entity.Material;
-import hu.magus.pricecalculator.entity.MaterialCategory;
+import hu.magus.pricecalculator.service.material.MaterialCategory;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,6 @@
 package hu.magus.pricecalculator.entity;
 
+import hu.magus.pricecalculator.service.material.MaterialCategory;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

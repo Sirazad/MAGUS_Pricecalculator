@@ -1,7 +1,6 @@
 package hu.magus.pricecalculator.service.material;
 
 import hu.magus.pricecalculator.entity.Material;
-import hu.magus.pricecalculator.entity.MaterialCategory;
 
 import java.util.List;
 

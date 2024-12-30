@@ -2,7 +2,7 @@ package hu.magus.pricecalculator.converter;
 
 
 import hu.magus.pricecalculator.controller.material.AddMaterialRequest;
-import hu.magus.pricecalculator.entity.MaterialCategory;
+import hu.magus.pricecalculator.service.material.MaterialCategory;
 import hu.magus.pricecalculator.exception.NoCategoryFoundException;
 import hu.magus.pricecalculator.service.material.MaterialDto;
 import lombok.AllArgsConstructor;

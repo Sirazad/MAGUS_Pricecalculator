@@ -1,6 +1,5 @@
 package hu.magus.pricecalculator.service.material;
 
-import hu.magus.pricecalculator.entity.MaterialCategory;
 import lombok.Builder;
 import lombok.Data;
 

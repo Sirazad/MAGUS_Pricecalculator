@@ -1,7 +1,7 @@
 package hu.magus.pricecalculator.converter;
 
 import hu.magus.pricecalculator.controller.material.GetMaterialsForCategoryRequest;
-import hu.magus.pricecalculator.entity.MaterialCategory;
+import hu.magus.pricecalculator.service.material.MaterialCategory;
 import hu.magus.pricecalculator.exception.NoCategoryFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.core.convert.converter.Converter;

@@ -2,7 +2,6 @@ package hu.magus.pricecalculator.service.material;
 
 
 import hu.magus.pricecalculator.entity.Material;
-import hu.magus.pricecalculator.entity.MaterialCategory;
 import hu.magus.pricecalculator.exception.EntityAlreadyExistsException;
 import hu.magus.pricecalculator.repository.MaterialRepository;
 import lombok.AllArgsConstructor;

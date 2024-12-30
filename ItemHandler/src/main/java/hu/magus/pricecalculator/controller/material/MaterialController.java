@@ -1,7 +1,7 @@
 package hu.magus.pricecalculator.controller.material;
 
 import hu.magus.pricecalculator.entity.Material;
-import hu.magus.pricecalculator.entity.MaterialCategory;
+import hu.magus.pricecalculator.service.material.MaterialCategory;
 import hu.magus.pricecalculator.service.material.MaterialDto;
 import hu.magus.pricecalculator.service.material.MaterialService;
 import jakarta.validation.Valid;
