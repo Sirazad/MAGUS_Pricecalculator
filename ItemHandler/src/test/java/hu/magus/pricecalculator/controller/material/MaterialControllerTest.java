@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
@@ -164,13 +165,13 @@ class MaterialControllerTest {
         @DisplayName("GetMaterials returns exact nothing when name is mismatch")
         void getMaterials_shouldReturnNothing_whenNameIsMismatch() {
             //GIVEN
-            when(service.getMaterial("wod")).thenReturn(WOOD);
+            when(service.getMaterial("wod")).thenReturn(null);
 
             //WHEN
-            Material actual = underTest.getMaterialByName("wood");
+            Material actual = underTest.getMaterialByName("wod");
 
             //THEN
-            assertEquals(WOOD, actual);
+            assertNull(actual);
         }
     }
 }

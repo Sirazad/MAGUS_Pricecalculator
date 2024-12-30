@@ -23,8 +23,10 @@ public class AddItemRequestValidator implements Validator {
         ValidationUtils.rejectIfEmpty(errors, "maxPrice", "Maximum price is not specified.");
 
         AddItemRequest request = (AddItemRequest) target;
-        if (request.getMinPrice()>request.getMaxPrice()) errors.reject("Minimum price is over maximum price.");
-        if (request.getMinPrice() < 0) errors.rejectValue("minPrice", "Minimum price is negative.");
-        if (request.getMaxPrice() < 0) errors.rejectValue("maxPrice", "Maximum price is negative.");
+        if (request.getMinPrice()!= null && request.getMaxPrice()!= null) {
+            if (request.getMinPrice()>request.getMaxPrice()) errors.reject("Minimum price is over maximum price.");
+            if (request.getMinPrice() < 0) errors.rejectValue("minPrice", "Minimum price is negative.");
+            if (request.getMaxPrice() < 0) errors.rejectValue("maxPrice", "Maximum price is negative.");
+        }
     }
 }
