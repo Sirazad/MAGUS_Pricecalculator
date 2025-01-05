@@ -43,9 +43,10 @@ public class MaterialServiceDefaultImpl implements MaterialService {
             throw new EntityAlreadyExistsException("Material " + material.getName() + " already exists, can not be created");
         }
 
-        Material newMaterial = new Material();
-        newMaterial.setMaterialCategory(material.getMaterialCategory());
-        newMaterial.setName(material.getName());
+        Material newMaterial = Material.builder()
+                .name(material.getName())
+                .materialCategory(material.getMaterialCategory())
+                .build();
         return repository.save(newMaterial);
     }
 

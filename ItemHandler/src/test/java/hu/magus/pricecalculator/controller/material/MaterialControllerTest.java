@@ -26,10 +26,10 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class MaterialControllerTest {
 
-    public static final Material WOOD = new Material();
-    public static final Material METAL = new Material();
-    public static final Material GLASS = new Material();
-    public static final Material DIAMOND = new Material();
+    public static final Material WOOD = Material.builder().build();
+    public static final Material METAL = Material.builder().build();
+    public static final Material GLASS = Material.builder().build();
+    public static final Material DIAMOND = Material.builder().build();
     @Mock
     private MaterialService service;
     @Mock
