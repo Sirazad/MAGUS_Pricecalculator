@@ -34,12 +34,14 @@ class AddItemRequestValidatorTest {
     @DisplayName("Given a valid AddItemRequest, when validate is called, then no exception is thrown")
     void validate_shouldNotThrowException_whenRequestIsValid() {
         //GIVEN
-        AddItemRequest request = new AddItemRequest();
-        request.setName("name");
-        request.setCategoryName("category");
-        request.setMaterialName("material");
-        request.setMinPrice(1);
-        request.setMaxPrice(2);
+        AddItemRequest request = AddItemRequest.builder()
+                .categoryName("category")
+                .materialName("material")
+                .minPrice(1)
+                .maxPrice(2)
+                .name("name")
+                .build();
+
         Errors errors = new BeanPropertyBindingResult(request, "addItemRequest");
 
         //WHEN
@@ -53,7 +55,7 @@ class AddItemRequestValidatorTest {
     @DisplayName("When fields are empty, errors are filled with the correct message")
     void validate_shouldAddError_whenFieldsIsEmpty() {
         //GIVEN
-        AddItemRequest request = new AddItemRequest();
+        AddItemRequest request = AddItemRequest.builder().build();
         Errors errors = new BeanPropertyBindingResult(request, "addItemRequest");
 
         //WHEN
@@ -78,12 +80,13 @@ class AddItemRequestValidatorTest {
     @DisplayName("When minPrice is over maxPrice, errors are filled with the correct message")
     void validate_shouldAddError_whenMinPriceIsOverMaxPrice() {
         //GIVEN
-        AddItemRequest request = new AddItemRequest();
-        request.setName("name");
-        request.setCategoryName("category");
-        request.setMaterialName("material");
-        request.setMinPrice(10);
-        request.setMaxPrice(2);
+        AddItemRequest request = AddItemRequest.builder()
+                .name("name")
+                .categoryName("category")
+                .materialName("material")
+                .minPrice(10)
+                .maxPrice(2)
+                .build();
         Errors errors = new BeanPropertyBindingResult(request, "addItemRequest");
 
         //WHEN
@@ -99,12 +102,13 @@ class AddItemRequestValidatorTest {
     @DisplayName("When minPrice and/or maxPrice is negative, errors are filled with the correct message")
     void validate_shouldAddError_whenPricesAreNegative() {
         //GIVEN
-        AddItemRequest request = new AddItemRequest();
-        request.setName("name");
-        request.setCategoryName("category");
-        request.setMaterialName("material");
-        request.setMinPrice(-3);
-        request.setMaxPrice(-2);
+        AddItemRequest request = AddItemRequest.builder()
+                .name("name")
+                .categoryName("category")
+                .materialName("material")
+                .minPrice(-3)
+                .maxPrice(-2)
+                .build();
         Errors errors = new BeanPropertyBindingResult(request, "addItemRequest");
 
         //WHEN

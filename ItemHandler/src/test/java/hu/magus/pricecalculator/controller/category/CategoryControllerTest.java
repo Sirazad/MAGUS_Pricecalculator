@@ -69,10 +69,12 @@ class CategoryControllerTest {
          @DisplayName("Given no input, when getAllCategories is called, then return a list of Category objects")
          void testGetAllCategories() {
              //GIVEN
-             Category category1 = new Category();
-             category1.setName("category1");
-             Category category2 = new Category();
-             category2.setName("category2");
+             Category category1 = Category.builder()
+                     .name("category1")
+                     .build();
+             Category category2 = Category.builder()
+                     .name("category2")
+                     .build();
 
              List<Category> categories = Arrays.asList(category1, category2);
              when(service.getAllCategories()).thenReturn(categories);

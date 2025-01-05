@@ -17,21 +17,19 @@ public class ItemAddRequestToItemDtoConverter implements Converter<AddItemReques
     @Override
     public ItemDto convert(AddItemRequest from) {
         Category category = categoryService.getCategory(from.getCategoryName());
-        if (category == null) throw new NoCategoryFoundException(from.getCategoryName());
+        if (category == null) throw new NoCategoryFoundException("category is not provided");
 
         // TODO check material
 
 
-        ItemDto newItemDto = new ItemDto();
-        newItemDto.setCategory(category);
-        newItemDto.setName(from.getName());
-        newItemDto.setQuality(from.getQuality());
-        newItemDto.setMinPrice(from.getMinPrice());
-        newItemDto.setMaxPrice(from.getMaxPrice());
-        newItemDto.setMaterial(null);
-
-
-        return newItemDto;
+        return ItemDto.builder()
+                .name(from.getName())
+                .minPrice(from.getMinPrice())
+                .maxPrice(from.getMaxPrice())
+                .quality(from.getQuality())
+                .category(category)
+                .material(null)
+                .build();
     }
 
 }

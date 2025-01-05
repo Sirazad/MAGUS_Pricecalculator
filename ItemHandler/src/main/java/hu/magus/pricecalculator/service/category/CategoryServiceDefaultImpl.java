@@ -30,8 +30,9 @@ public class CategoryServiceDefaultImpl implements CategoryService {
 
     @Override
     public boolean createCategory(String name) {
-        Category category = new Category();
-        category.setName(name);
+        Category category = Category.builder()
+                .name(name)
+                .build();
         repository.save(category);
         return repository.findByName(name) != null;
     }

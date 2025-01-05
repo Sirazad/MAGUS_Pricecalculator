@@ -1,9 +1,11 @@
 package hu.magus.pricecalculator.controller.item;
 
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class AddItemRequest {
 
     private String name;
