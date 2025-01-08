@@ -2,12 +2,14 @@ package hu.magus.pricecalculator.service.category;
 
 import hu.magus.pricecalculator.entity.Category;
 import hu.magus.pricecalculator.repository.CategoryRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class CategoryServiceDefaultImpl implements CategoryService {
 
     @Autowired
@@ -30,6 +32,10 @@ public class CategoryServiceDefaultImpl implements CategoryService {
 
     @Override
     public boolean createCategory(String name) {
+        if(repository.findByName(name) != null) {
+            log.info("Category already exists with name: {}", name);
+            return false;
+        }
         Category category = Category.builder()
                 .name(name)
                 .build();

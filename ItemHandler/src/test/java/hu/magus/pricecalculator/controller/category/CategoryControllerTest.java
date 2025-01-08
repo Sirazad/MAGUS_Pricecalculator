@@ -9,13 +9,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,14 +35,15 @@ class CategoryControllerTest {
          @DisplayName("Given a valid category name, when createCategory is called, then return true")
          void testCreateCategory_shouldReturnTrue_whenCategoryIsSaved() {
              //GIVEN
-             String name = "category1";
+             String name = "teszt kategória";
+             ResponseEntity<String> expected = ResponseEntity.status(201).body("Category created: " + name);
              when(service.createCategory(name)).thenReturn(true);
 
              //WHEN
-             boolean result = controller.createCategory(name);
+             ResponseEntity<String> actual = controller.createCategory(name);
 
              //THEN
-             assertTrue(result);
+             assertEquals(expected, actual);
          }
 
          @Test
@@ -51,14 +51,31 @@ class CategoryControllerTest {
          void testCreateCategory_shouldReturnFalse_whenCategoryIsNotSaved() {
              //GIVEN
              String name = "";
+             ResponseEntity<String> expected = ResponseEntity.status(409).body("Category is either already exists or invalid");
              when(service.createCategory(name)).thenReturn(false);
 
              //WHEN
-             boolean result = controller.createCategory(name);
+             ResponseEntity<String> actual = controller.createCategory(name);
 
              //THEN
-             assertFalse(result);
+             assertEquals(expected, actual);
          }
+
+         @Test
+         @DisplayName("given a name for an already existing category, return false")
+         void testCreateCategory_shouldReturnFalse_whenCategoryAlreadyExists() {
+             //GIVEN
+             String name = "test category";
+             ResponseEntity<String> expected = ResponseEntity.status(409).body("Category is either already exists or invalid");
+             when(service.createCategory(name)).thenReturn(false);
+
+             //WHEN
+             ResponseEntity<String> actual = controller.createCategory(name);
+
+             //THEN
+             assertEquals(expected, actual);
+         }
+
      }
 
      @Nested

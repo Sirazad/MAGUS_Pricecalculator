@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +25,16 @@ public class CategoryController {
     private CategoryService service;
 
     @PostMapping("/add")
-    public boolean createCategory(@RequestParam("name") @NonNull String name) {
+    public ResponseEntity<String> createCategory(@RequestParam("name") @NonNull String name) {
         log.info("creating categories with {}", name);
-        return service.createCategory(name);
+        
+        boolean result = service.createCategory(name);
+
+        if (result) {
+            return ResponseEntity.status(HttpStatus.CREATED).body("Category created: " + name);
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Category is either already exists or invalid");
+        }
     }
 
     @GetMapping("/all")
