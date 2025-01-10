@@ -75,7 +75,6 @@ class CategoryControllerTest {
              //THEN
              assertEquals(expected, actual);
          }
-
      }
 
      @Nested

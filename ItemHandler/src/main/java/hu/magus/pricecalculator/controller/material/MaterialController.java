@@ -48,6 +48,8 @@ public class MaterialController {
 
     @PostMapping("/add")
     public Material createMaterial(@RequestBody AddMaterialRequest addMaterialRequest) {
+        log.info("Creating material with name: {}", addMaterialRequest.name());
+        log.info(addMaterialRequest.toString());
         return service.createMaterial(converter.convert(addMaterialRequest, MaterialDto.class));
     }
 }
