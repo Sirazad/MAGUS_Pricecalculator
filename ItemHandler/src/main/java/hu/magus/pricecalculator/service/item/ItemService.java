@@ -21,6 +21,8 @@ public interface ItemService {
 
     Item addItem(@Valid ItemDto request);
 
-    Item modifyItem(int id, UpdateItemRequest request);
+    Item modifyItem(long id, UpdateItemRequest request);
+
+    boolean deleteItem(long id);
 
 }

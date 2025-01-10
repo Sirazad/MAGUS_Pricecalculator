@@ -56,8 +56,19 @@ public class ItemServiceDefaultImpl implements ItemService {
     }
 
     @Override
-    public Item modifyItem(int id, UpdateItemRequest request) {
+    public Item modifyItem(long id, UpdateItemRequest request) {
         return null;
+    }
+
+    @Override
+    public boolean deleteItem(long id) {
+        repository.findById(id)
+                .ifPresentOrElse(repository::delete, () -> {
+                    throw new NoItemFoundException(String.valueOf(id));
+                });
+
+        return repository.findById(id)
+                .isEmpty();
     }
 
 

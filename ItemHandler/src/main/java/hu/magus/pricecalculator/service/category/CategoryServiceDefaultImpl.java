@@ -1,6 +1,7 @@
 package hu.magus.pricecalculator.service.category;
 
 import hu.magus.pricecalculator.entity.Category;
+import hu.magus.pricecalculator.exception.NoCategoryFoundException;
 import hu.magus.pricecalculator.repository.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,13 @@ public class CategoryServiceDefaultImpl implements CategoryService {
                 .build();
         repository.save(category);
         return repository.findByName(name) != null;
+    }
+
+    @Override
+    public boolean deleteCategory(Long id) {
+        repository.findById(id)
+                .ifPresentOrElse(repository::delete, () -> {throw new NoCategoryFoundException(String.valueOf(id));});
+        return repository.findById(id)
+                .isEmpty();
     }
 }

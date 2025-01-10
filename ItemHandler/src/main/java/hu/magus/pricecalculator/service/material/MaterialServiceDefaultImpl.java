@@ -3,6 +3,7 @@ package hu.magus.pricecalculator.service.material;
 
 import hu.magus.pricecalculator.entity.Material;
 import hu.magus.pricecalculator.exception.EntityAlreadyExistsException;
+import hu.magus.pricecalculator.exception.NoItemFoundException;
 import hu.magus.pricecalculator.repository.MaterialRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -58,7 +59,9 @@ public class MaterialServiceDefaultImpl implements MaterialService {
 
     @Override
     public boolean deleteMaterial(Long id) {
-        repository.deleteById(id);
+        repository.findById(id).ifPresentOrElse(repository::delete, () -> {
+            throw new NoItemFoundException(String.valueOf(id));
+        });
         return !repository.existsById(id);
     }
 }

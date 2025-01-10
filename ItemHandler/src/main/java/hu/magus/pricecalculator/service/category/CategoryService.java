@@ -12,4 +12,6 @@ public interface CategoryService {
     Category getCategory(Long id);
 
     boolean createCategory(String name);
+
+    boolean deleteCategory(Long id);
 }
