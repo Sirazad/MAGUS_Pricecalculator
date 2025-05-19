@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -102,4 +103,71 @@ class CategoryControllerTest {
              assertEquals(categories, result);
          }
      }
+
+    @Nested
+    @DisplayName("getCategories by name or id")
+    class getCategoriesTest {
+        @Test
+        @DisplayName("Given a category name, when getCategory is called, then return the corresponding Category object")
+        void testGetCategoryByName() {
+            //GIVEN
+            String name = "test category";
+            Category expectedCategory = Category.builder()
+                    .name(name)
+                    .build();
+            when(service.getCategory(name)).thenReturn(expectedCategory);
+
+            //WHEN
+            Category actualCategory = controller.getCategory(name);
+
+            //THEN
+            assertEquals(expectedCategory, actualCategory);
+        }
+
+        @Test
+        @DisplayName("Given a category id, when getCategory is called, then return the corresponding Category object")
+        void testGetCategoryById() {
+            //GIVEN
+            Long id = 1L;
+            Category expectedCategory = Category.builder()
+                    .id(id)
+                    .name("test category")
+                    .build();
+            when(service.getCategory(id)).thenReturn(expectedCategory);
+
+            //WHEN
+            Category actualCategory = controller.getCategory(id);
+
+            //THEN
+            assertEquals(expectedCategory, actualCategory);
+        }
+
+        @Test
+        @DisplayName("Given a non-existing category id, when getCategory is called, then return null")
+        void testGetCategoryById_shouldReturnNull_whenCategoryNotFound() {
+            //GIVEN
+            Long id = 1L;
+            when(service.getCategory(id)).thenReturn(null);
+
+            //WHEN
+            Category actualCategory = controller.getCategory(id);
+
+            //THEN
+            assertNull(actualCategory);
+        }
+
+        @Test
+        @DisplayName("Given a non-existing category name, when getCategory is called, then return null")
+        void testGetCategoryByName_shouldReturnNull_whenCategoryNotFound() {
+            //GIVEN
+            String name = "non-existing category";
+            when(service.getCategory(name)).thenReturn(null);
+
+            //WHEN
+            Category actualCategory = controller.getCategory(name);
+
+            //THEN
+            assertNull(actualCategory);
+        }
+    }
 }

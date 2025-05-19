@@ -70,6 +70,4 @@ public class ItemServiceDefaultImpl implements ItemService {
         return repository.findById(id)
                 .isEmpty();
     }
-
-
 }
