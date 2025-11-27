@@ -3,6 +3,7 @@ package hu.magus.pricecalculator.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
@@ -21,7 +22,11 @@ public class CorsConfig {
 //        return new CorsFilter(source);
 
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.addAllowedOrigin("http://127.0.0.1:5500"); // Allow specific frontend origin
+        corsConfig.setAllowCredentials(true);
+        corsConfig.addAllowedOrigin("http://127.0.0.1:5173"); // Allow specific frontend origin
+        corsConfig.addAllowedOrigin("http://localhost:3000");
+        corsConfig.addAllowedOrigin("http://127.0.0.1:3000");
+        corsConfig.addAllowedOrigin("http://localhost:5173");
         corsConfig.addAllowedMethod("GET"); // Allow specific HTTP methods (GET, POST, etc.)
         corsConfig.addAllowedMethod("POST");
         corsConfig.addAllowedMethod("PUT");
@@ -35,4 +40,17 @@ public class CorsConfig {
 
     }
 
-}
+
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowCredentials(true);
+//        configuration.addAllowedOriginPattern("*");
+//        configuration.addAllowedHeader("*");
+//        configuration.addAllowedMethod("*");
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+
+
+    }
