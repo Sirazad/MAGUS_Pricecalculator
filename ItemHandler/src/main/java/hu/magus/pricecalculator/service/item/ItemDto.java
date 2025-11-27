@@ -20,5 +20,6 @@ public class ItemDto {
     private int quality;
     private Category category;
     private Material material;
+    private String baseQuantity;
 
 }

@@ -39,4 +39,5 @@ public class Item {
     private Category category;
     @OneToOne(fetch = FetchType.LAZY)
     private Material material;
+    private String baseQuantity;
 }

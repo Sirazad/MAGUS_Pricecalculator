@@ -20,6 +20,7 @@ public class ItemDtoToItemConverter implements Converter<ItemDto, Item> {
                 .material(from.getMaterial())
                 .category(from.getCategory())
                 .quality(from.getQuality())
+                .baseQuantity(from.getBaseQuantity())
                 .build();
     }
 }

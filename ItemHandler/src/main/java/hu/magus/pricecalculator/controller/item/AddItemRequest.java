@@ -18,5 +18,6 @@ public class AddItemRequest {
     private int quality;
     private String categoryName;
     private String materialName;
+    private String baseQuantity;
 
 }
